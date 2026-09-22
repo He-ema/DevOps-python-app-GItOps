@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: python-app
-          image: ohema/python-app:1.0.0-34
+          image: ohema/python-app:1.0.0-35
           ports:
             - containerPort: 5000
