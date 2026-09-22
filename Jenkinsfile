@@ -20,9 +20,9 @@ pipeline {
         stage("Update the Deployment Tags") {
             steps {
                 sh """
-                   cat deployment.yaml
-                   sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yaml
-                   cat deployment.yaml
+                   cat deployment.yml
+                   sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yml
+                   cat deployment.yml
                 """
             }
         }
@@ -32,7 +32,7 @@ pipeline {
                 sh """
                    git config --global user.name "He-ema"
                    git config --global user.email "zx.hema72@gmail.com"
-                   git add deployment.yaml
+                   git add deployment.yml
                    git commit -m "Updated Deployment Manifest"
                 """
                 withCredentials([gitUsernamePassword(credentialsId: 'github', gitToolName: 'Default')]) {
