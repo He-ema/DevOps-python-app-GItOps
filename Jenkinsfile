@@ -18,12 +18,14 @@ pipeline {
         }
 
         stage("Update the Deployment Tags") {
-            steps {
-                sh """
-                   cat deployment.yml
-                   sed -i 's/${APP_NAME}.*/${APP_NAME}:${IMAGE_TAG}/g' deployment.yml
-                   cat deployment.yml
-                """
+                steps {
+                    sh """
+                        cat deployment.yml
+
+                         sed -i 's|^\\s*image:.*|          image: ohema/${APP_NAME}:${IMAGE_TAG}|' deployment.yml
+
+                        cat deployment.yml
+                        """
             }
         }
 
